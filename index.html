@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src = "/socket.io/socket.io.js"></script>
+    <script>
+        var socket = io("ws://localhost:3000");
+        socket.on("update-data",function(data){
+            for(val of data)
+            {
+                document.getElementById("append-data").innerHTML+='<p>' + val + '</br></p>';
+            }
+        });
+
+        socket.on("inital-data",function(data){
+            for(val of data)
+            {
+                document.getElementById("append-data").innerHTML+='<p>' + val + '</br></p>';
+            }
+        })
+    </script>
+    <title>Document</title>
+</head>
+<body>
+    <div id = "append-data"></div>
+</body>
+</html>
